@@ -22,7 +22,7 @@ class Client:
         }
 
     def run(self):
-        with open("./id.cvs", "r") as file:
+        with open("release_ids.txt", "r") as file:
             line = file.readline()
             while line:
                 self._send_request(line.replace('"', "").strip())
