@@ -1,3 +1,5 @@
+from time import sleep
+
 import requests
 import os
 import logging
@@ -25,6 +27,9 @@ class Client:
             while line:
                 self._send_request(line.replace('"', "").strip())
                 line = file.readline()
+
+                # to avoid the server side rate limit
+                sleep(1)
 
     def _send_request(self, release_id):
         print(os.path.join(self.base_url, release_id))
